@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>application1</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="num1" />
+        <select name="sisoku">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">×</option>
+            <option value="/">÷</option>
+        </select>
+        <input type="text" name="num2" />
+        = {{ result }}
+        <input type="submit" value="計算" />
+
+    </form>
+
+    <br>
+    <a href = "{% url 'index' %}">indexへ</a>
+</body>
+</html>

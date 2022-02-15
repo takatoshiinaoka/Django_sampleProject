@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>application4</title>
+    </head>
+    <body>
+        <h1>画像に何が出ているか確認してくれる</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.gazou }}
+            <input type="submit" value="submit" />
+        </form>
+        {{results}}<br>
+        <a href="{% url 'index' %}">index</a><br>
+    </body>
+</html>

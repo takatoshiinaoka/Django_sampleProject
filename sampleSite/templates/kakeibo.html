@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>Kakeibo Site</title>
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <h1>Kakeibo Site!</h1>
+        <table>
+            <tr>
+                <th><label>URL:</label></th>
+                <td><label>{% url 'index' %}</label></td>
+            </tr>
+            <tr>
+                <th><label>ID:</label></th>
+                <td><label>{{ id }}</label></td>
+            </tr>
+            <tr>
+                <th><label>name:</label></th>
+                <td><label>{{ name }}</label></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="container-fluid pt-3">
+        <form method="post">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-6"><b>日付</b></div>
+        <div class="col-6"><b>収入・支出</b></div>
+        </div>
+        <div class="row">
+        <div class="col-6"><input class="form-control" type="datetime-local" name="date" /></div>
+        <div class="col-2"><label>収入</label><input type="radio" name="opt" value="収入"></div>
+        <div class="col-2"><label>支出</label><input type="radio" name="opt" value="支出"></div>
+        <div class="col-2"><label>借金</label><input type="radio" name="opt" value="借金"></div>
+        </div>
+        <div class="row">
+        <div class="col-6"><b>費目</b></div>
+        <div class="col-6"><b>金額</b></div>
+        </div>
+        <div class="row">
+        <div class="col-6"><input type="text" class="form-control" name="message" /></div>
+        <div class="col-6"><input type="number" class="form-control" name="suuji"></div>
+        </div>
+        <div class="row pt-3">
+        <div class="col-12 text-right"><input type="submit" class="btn btn-danger" value="登録" /></div>
+        </div>
+        </form>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>収入・支出</th>
+                    <th>費目</th>
+                    <th>金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for kakeibo in kakeiboList %}
+                <tr>
+                <td>{{kakeibo.date}}</td>
+                <td>{{kakeibo.opt}}</td>
+                <td>{{kakeibo.message}}</td>
+                <td>{{kakeibo.suuji}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-12 text-right">合計金額：{{sum}}</div>
+        </div>
+    </div>
+    <a href = "{% url 'index' %}">indexへ</a>
+    <a href="/graph">graphへ</a>
+    <br>
+    
+</body>
+</html>

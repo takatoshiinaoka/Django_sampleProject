@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <head>
+        <title>study</title>
+        <style>
+        .top{
+            color:#FF0000;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="top">合格はTrue、不合格はFalse、ボーダーラインは50点</div><br>
+        <div>
+            番号:{{user_id1}} 名前:{{user1}}<br>
+            Science    :<b>{{Science1}}</b><br>
+            Mathematics:<b>{{Mathematics1}}</b><br>
+            Physics    :<b>{{Physics1}}</b><br>
+            Design     :<b>{{Design1}}</b><br>
+            全教科の合計点：<b>{{summary1}}</b><br>
+            全教科の平均点：<b>{{average1}}</b><br>
+        </div>
+        <br>
+        <div>
+            番号:{{user_id2}} 名前:{{user2}}<br>
+            Science    :<b>{{Science2}}</b><br>
+            Mathematics:<b>{{Mathematics2}}</b><br>
+            Physics    :<b>{{Physics2}}</b><br>
+            Design     :<b>{{Design2}}</b><br>
+            全教科の合計点：<b>{{summary2}}</b><br>
+            全教科の平均点：<b>{{average2}}</b><br>
+        </div>
+        <br>
+        <div>
+            番号:{{user_id3}} 名前:{{user3}}<br>
+            Science    :<b>{{Science3}}</b><br>
+            Mathematics:<b>{{Mathematics3}}</b><br>
+            Physics    :<b>{{Physics3}}</b><br>
+            Design     :<b>{{Design3}}</b><br>
+            全教科の合計点：<b>{{summary3}}</b><br>
+            全教科の平均点：<b>{{average3}}</b><br>
+        </div>
+        <br>
+        <a href = "{% url 'index' %}">indexへ</a>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    <title>application2</title>
+</head>
+<body>
+    {{ mondai }}
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="text" />
+        <input type="submit" name="送信" />
+
+    </form>
+    スコア：{{score}}点
+    <br>
+    <a href = "{% url 'index' %}">indexへ</a>
+</body>
+</html>

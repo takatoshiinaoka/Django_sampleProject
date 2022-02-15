@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<haed>
+    <title>Login</title>
+</head>
+<body>
+    <form method="post" action="{% url 'login' %}" >
+    {% csrf_token %}
+    {{ form.username.label_tag }}
+    {{ form.username }}
+    {{ form.password.label_tag }}
+    {{ form.password }}
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+    
+</body>
+</html>

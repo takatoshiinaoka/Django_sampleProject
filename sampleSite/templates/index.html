@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>Sample Site</title>
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <h1>Sample Site!</h1>
+        <table>
+            <tr>
+                <th><label>URL:</label></th>
+                <td><label>{% url 'index' %}</label></td>
+            </tr>
+            <tr>
+                <th><label>ID:</label></th>
+                <td><label>{{ id }}</label></td>
+            </tr>
+            <tr>
+                <th><label>name:</label></th>
+                <td><label>{{ name }}</label></td>
+            </tr>
+        </table>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.message }}
+        <input type="submit" value="kweet!" />
+    </form>
+
+
+
+    {% for kweet in kweetList %}
+        <hr />
+        {{ kweet.message }}<br>
+    {% endfor %}
+
+
+
+    <a href="/study">sutudyページへ</a>
+    <a href="{% url 'page2'%}">page2へ</a>
+    <a href="{% url 'kakeibo'%}">kakeiboへ</a>
+    <a href="{% url 'graph'%}">graphへ</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">logout</a>
+    {% endif %}
+
+
+    
+</body>
+</html>
